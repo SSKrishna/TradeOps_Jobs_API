@@ -1,0 +1,37 @@
+### Health check
+GET http://localhost:8080/health
+
+### List all jobs (3 seed jobs load automatically)
+GET http://localhost:8080/api/v1/jobs
+
+### Only pending jobs
+GET http://localhost:8080/api/v1/jobs?status=pending
+
+### Create a new job
+POST http://localhost:8080/api/v1/jobs
+Content-Type: application/json
+
+{
+  "title": "Leaking faucet in bathroom",
+  "customer_name": "John Smith",
+  "address": "500 Howard St, Omaha NE 68102",
+  "trade_type": "plumbing",
+  "assigned_to": "Mike Jimenez"
+}
+
+### Update status — paste a real ID from the list response
+PATCH http://localhost:8080/api/v1/jobs/PASTE-ID-HERE/status
+Content-Type: application/json
+
+{
+  "status": "in_progress",
+  "notes": "Tech on site"
+}
+
+### Close a job — paste a real ID
+POST http://localhost:8080/api/v1/jobs/PASTE-ID-HERE/close
+Content-Type: application/json
+
+{
+  "notes": "Issue resolved, customer signed off"
+}
